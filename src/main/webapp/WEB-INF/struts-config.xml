@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+        
+<struts-config>  
+    <form-beans>
+        <form-bean name="userForm" type="com.synertrade.training.form.UserForm" />
+        <form-bean name="updateUserForm" type="com.synertrade.training.form.UpdateUserForm" />
+        <form-bean name="saveUserForm" type="com.synertrade.training.form.SaveUserForm" />
+    </form-beans>
+    <action-mappings>
+    	<action path="/addUsr" forward="/indexStruts.jsp" />
+    	
+    	<action path="/showUsr" type="com.synertrade.training.action.ShowUserList">
+    		<forward name="success" path="/index1.jsp" />
+    	</action>
+    	
+    	<action path="/users" type="com.synertrade.training.action.UserList" name="userForm" validate="true">
+			<forward name="success" path="/index1.jsp" />
+			<forward name="failure" path="/indexStruts.jsp" />
+		</action>  
+		
+		<action path="/updateUsr" type="com.synertrade.training.action.UpdateUser" name="updateUserForm" validate="true">
+			<forward name="success" path="/index1.jsp" />
+			<forward name="failure" path="/error.jsp" />
+		</action>
+		
+		<action path="/saveUsr" type="com.synertrade.training.action.AddUser" name="updateUserForm" validate="true">
+			<forward name="success" path="/index1.jsp" />
+			<forward name="failure" path="/error.jsp" />
+		</action>
+    </action-mappings>
+</struts-config>

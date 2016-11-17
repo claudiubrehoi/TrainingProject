@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping package="com.synertrade.training.vo">
+	<class name="TrainingCountryVO" table="TRAINING_COUNTRY">
+		<id name="id" type="int">
+			<column name="ID" not-null="true" />
+			<generator class="assigned" />
+		</id>
+		<property name="name" type="string">
+			<column name="NAME" length="50" not-null="true" />
+		</property>
+		<set name="cities" inverse="true" cascade="all-delete-orphan">
+			<key column="COUNTRY_ID"/>
+			<one-to-many class="TrainingCityVO"/>
+		</set>
+	</class>
+</hibernate-mapping>

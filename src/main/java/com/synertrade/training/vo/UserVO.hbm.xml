@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping package="com.synertrade.training.vo">
+	<class name="UserVO" table="TRAINING_USER">
+		<id name="id" type="int">
+			<column name="ID_USR" not-null="true" />
+			<generator class="assigned" />
+		</id>
+		<property name="username" type="string">
+			<column name="USERNAME" length="25" not-null="true" />
+		</property>
+		<property name="name" type="string">
+			<column name="NAME" length="50" not-null="true" />
+		</property>
+		<property name="birth_date" type="java.sql.Date">
+			<column name="BIRTH_DATE" not-null="true" />
+		</property>
+		<many-to-one name="address" column="ADDRESS_ID" class="TrainingAddressVO" not-null="true" />
+		<many-to-one name="application" column="APPLICATION_ID" class="TrainingApplicationVO" not-null="true" />
+	</class>
+</hibernate-mapping>

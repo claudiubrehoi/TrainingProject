@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration
+    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+
+		<property name="hibernate.connection.datasource">java:/trainingDS</property>
+		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="hibernate.connection.pool_size">10</property>
+
+		<!-- <property name="dialect">common.backend.util.T2BDialect</property> -->
+		<property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+		<property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+		<property name="hibernate.dialect">com.synertrade.training.util.MsSqlDialect</property>
+		<property name="connection.autocommit">false</property>
+		<property name="show_sql">false</property>
+
+		<mapping class="com.synertrade.training.vo.UserVO" resource="com/synertrade/training/vo/UserVO.hbm.xml" />
+		<mapping class="com.synertrade.training.vo.TrainingApplicationVO" resource="com/synertrade/training/vo/TrainingApplicationVO.hbm.xml" />
+		<mapping class="com.synertrade.training.vo.TrainingAddressVO" resource="com/synertrade/training/vo/TrainingAddressVO.hbm.xml" />
+		<mapping class="com.synertrade.training.vo.TrainingStreetVO" resource="com/synertrade/training/vo/TrainingStreetVO.hbm.xml" />
+		<mapping class="com.synertrade.training.vo.TrainingCityVO" resource="com/synertrade/training/vo/TrainingCityVO.hbm.xml" />
+		<mapping class="com.synertrade.training.vo.TrainingCountryVO" resource="com/synertrade/training/vo/TrainingCountryVO.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

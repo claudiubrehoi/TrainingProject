@@ -39,5 +39,9 @@
 	    <taglib-uri>struts-nested.tld</taglib-uri>
 	    <taglib-location>/WEB-INF/tlds/struts-nested.tld</taglib-location>
 	  </taglib>
+	  <taglib>
+	      <taglib-uri>custom.tld</taglib-uri>
+	      <taglib-location>/WEB-INF/tlds/custom.tld</taglib-location>
+	   </taglib>
 	</jsp-config>
 </web-app>

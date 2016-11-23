@@ -10,9 +10,9 @@ import com.synertrade.training.vo.UserVO;
 
 public class UserBU {
 
-	public List<UserDTO> getUserList() {
-		UserDAO userDAO = new UserDAO();
-		return userDAO.getUserList();
+	public <T> List<T> getUserList(Class<T> cls) {
+		UserDAO<T> userDAO = new UserDAO<T>();
+		return userDAO.getUserList(cls);
 	}
 	
 	public boolean saveUser(int id, String username, String name) {

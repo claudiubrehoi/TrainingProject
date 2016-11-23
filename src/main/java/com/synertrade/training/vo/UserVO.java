@@ -2,10 +2,10 @@ package com.synertrade.training.vo;
 
 import java.sql.Date;
 
-public class UserVO {
+public class UserVO extends BaseVO {
 	
 	private int id;
-	
+
 	private String username;
 	
 	private String name;
@@ -15,6 +15,15 @@ public class UserVO {
 	private TrainingAddressVO address;
 	
 	private TrainingApplicationVO application;
+	
+	@Override
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public TrainingAddressVO getAddress() {
 		return address;
@@ -38,14 +47,6 @@ public class UserVO {
 
 	public void setBirth_date(Date birth_date) {
 		this.birth_date = birth_date;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getUsername() {

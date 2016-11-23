@@ -5,14 +5,15 @@ import java.util.Set;
 
 //import org.hibernate.mapping.Set;
 
-public class TrainingCountryVO {
+public class TrainingCountryVO extends BaseVO {
 	
 	private int id;
 	
 	private String name;
 	
 	private Set<TrainingCityVO> cities = new HashSet<TrainingCityVO>();
-
+	
+	@Override
 	public int getId() {
 		return id;
 	}

@@ -3,7 +3,8 @@ package com.synertrade.training.vo;
 import java.util.HashSet;
 import java.util.Set;
 
-public class TrainingCityVO {
+public class TrainingCityVO extends BaseVO {
+	
 	private int id;
 	
 	private String name;
@@ -12,6 +13,7 @@ public class TrainingCityVO {
 	
 	private Set<TrainingStreetVO> streets = new HashSet<TrainingStreetVO>();
 
+	@Override
 	public int getId() {
 		return id;
 	}
@@ -19,7 +21,7 @@ public class TrainingCityVO {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
 	public String getName() {
 		return name;
 	}

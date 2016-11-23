@@ -6,7 +6,7 @@
 <hibernate-configuration>
 	<session-factory>
 
-		<property name="hibernate.connection.datasource">java:/trainingDS</property>
+		<property name="hibernate.connection.datasource">java:/hibstrutsDS</property>
 		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
 		<property name="hibernate.connection.pool_size">10</property>
 

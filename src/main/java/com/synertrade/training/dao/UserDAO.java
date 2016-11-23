@@ -21,28 +21,42 @@ import com.synertrade.training.vo.TrainingAddressVO;
 import com.synertrade.training.vo.TrainingApplicationVO;
 import com.synertrade.training.vo.UserVO;
 
-public class UserDAO {
+public class UserDAO<T> {
 
 
-	public List<UserDTO> getUserList() {
-		List<UserDTO> users;
+	public List<T> getUserList(Class cls) {
+		List<T> users;
+		String query = "";
 		Session session = HibernateUtil.getSession();
 		Transaction tx = session.beginTransaction();
-
-		String query = "select new com.synertrade.training.dto.UserDTO(usr.id, usr.username, usr.name, usr.birth_date, usr.address, usr.application) from UserVO usr";
+		if(cls.equals(UserDTO.class)) {
+			query = "select new com.synertrade.training.dto.UserDTO(usr.id, usr.username, usr.name, usr.birth_date, usr.address, usr.application) from UserVO usr";
+			
+		} else if (cls.equals(UserVO.class)) {
+			query = "from UserVO u";
+		}
 		
 		Query q = session.createQuery(query);
 		
-		users = (List<UserDTO>) q.list();
-
-		for (UserDTO usr : users) {
-		    Hibernate.initialize(usr.getAddress());
-		    Hibernate.initialize(usr.getApplication());
-		    Hibernate.initialize(usr.getAddress().getStreet());
-		    Hibernate.initialize(usr.getAddress().getStreet().getCity());
-		    Hibernate.initialize(usr.getAddress().getStreet().getCity().getCountry());
-		}
+		users = (List<T>) q.list();
 		
+		if(cls.equals(UserDTO.class)) {
+			for (UserDTO usr : (List<UserDTO>) users) {
+			    Hibernate.initialize(usr.getAddress());
+			    Hibernate.initialize(usr.getApplication());
+			    Hibernate.initialize(usr.getAddress().getStreet());
+			    Hibernate.initialize(usr.getAddress().getStreet().getCity());
+			    Hibernate.initialize(usr.getAddress().getStreet().getCity().getCountry());
+			}
+		} else if (cls.equals(UserVO.class)) {
+			for (UserVO usr : (List<UserVO>) users) {
+			    Hibernate.initialize(usr.getAddress());
+			    Hibernate.initialize(usr.getApplication());
+			    Hibernate.initialize(usr.getAddress().getStreet());
+			    Hibernate.initialize(usr.getAddress().getStreet().getCity());
+			    Hibernate.initialize(usr.getAddress().getStreet().getCity().getCountry());
+			}
+		}
 		tx.commit();
 		HibernateUtil.closeSession();
 

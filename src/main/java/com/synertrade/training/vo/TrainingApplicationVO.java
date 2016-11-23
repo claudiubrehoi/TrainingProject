@@ -3,14 +3,15 @@ package com.synertrade.training.vo;
 import java.util.HashSet;
 import java.util.Set;
 
-public class TrainingApplicationVO {
+public class TrainingApplicationVO extends BaseVO {
 	
 	private int id;
 	
 	private String name;
 	
 	private Set<UserVO> users = new HashSet<UserVO>();
-
+	
+	@Override
 	public int getId() {
 		return id;
 	}

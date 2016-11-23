@@ -30,7 +30,7 @@ public class HibernateController extends HttpServlet {
 		
 		UserBU userBU = new UserBU();
 		
-		List<UserDTO> users = userBU.getUserList();
+		List<UserDTO> users = userBU.getUserList(UserDTO.class);
 		
 		request.setAttribute("users", users);
 		
@@ -105,7 +105,7 @@ public class HibernateController extends HttpServlet {
 
 	private void list(PrintWriter out){
 		UserBU userBU = new UserBU();
-		List<UserDTO> userList = userBU.getUserList();
+		List<UserDTO> userList = userBU.getUserList(UserDTO.class);
 		out.println("Empty list");
 	}
 

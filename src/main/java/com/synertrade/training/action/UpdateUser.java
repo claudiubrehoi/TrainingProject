@@ -13,6 +13,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.synertrade.training.bu.UserBU;
+import com.synertrade.training.dto.UserDTO;
 import com.synertrade.training.form.UpdateUserForm;
 
 public class UpdateUser extends Action {
@@ -47,7 +48,7 @@ public class UpdateUser extends Action {
 		if(usrBu.updateUser(Integer.parseInt(id), username, name, d)) {
 			target = "success";
 			
-			request.setAttribute("users", usrBu.getUserList());
+			request.setAttribute("users", usrBu.getUserList(UserDTO.class));
 		}
 		
 		return (mapping.findForward(target));

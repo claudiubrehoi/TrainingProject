@@ -9,13 +9,14 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.synertrade.training.bu.UserBU;
+import com.synertrade.training.dto.UserDTO;
 
 public class ShowUserList extends Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) {
 		
 		UserBU usrBu = new UserBU();
 		
-		request.setAttribute("users", usrBu.getUserList());
+		request.setAttribute("users", usrBu.getUserList(UserDTO.class));
 		
 		return (mapping.findForward("success"));
 	}
